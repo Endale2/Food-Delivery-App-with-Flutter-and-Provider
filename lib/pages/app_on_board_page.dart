@@ -70,6 +70,8 @@ class _AppOnBoardPageState extends State<AppOnBoardPage> {
             },
           ),
           Positioned(
+            bottom: 170,
+            left: 25,
             child: Row(
               children: [
                 ...List.generate(
@@ -80,15 +82,36 @@ class _AppOnBoardPageState extends State<AppOnBoardPage> {
                     width: 50,
                     margin: const EdgeInsets.only(right: 10),
                     decoration: BoxDecoration(
-                      color: currentIndex == index
-                          ? Colors.white
-                          : Colors.white.withOpacity(0.5),
-                    ),
+                        color: currentIndex == index
+                            ? Colors.white
+                            : Colors.white.withOpacity(0.5),
+                        borderRadius: BorderRadius.circular(15)),
                   ),
                 ),
               ],
             ),
           ),
+          Positioned(
+              bottom: 30,
+              child: SizedBox(
+                height: 75,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: MaterialButton(
+                    onPressed: () {},
+                    color: Colors.orange,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15)),
+                    minWidth: MediaQuery.of(context).size.width - 50,
+                    child: const Center(
+                      child: Text(
+                        "Get Started",
+                        style: TextStyle(color: Colors.white, fontSize: 24),
+                      ),
+                    ),
+                  ),
+                ),
+              ))
         ],
       ),
     );
