@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app/onboards.dart';
 import 'package:animate_do/animate_do.dart';
+import 'package:food_delivery_app/pages/main_page.dart';
 
 class AppOnBoardPage extends StatefulWidget {
   const AppOnBoardPage({super.key});
@@ -110,7 +111,12 @@ class _AppOnBoardPageState extends State<AppOnBoardPage> {
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: MaterialButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const MainPage()));
+                      },
                       color: Colors.orange,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(15)),
