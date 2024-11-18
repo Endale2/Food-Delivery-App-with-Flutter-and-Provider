@@ -82,7 +82,7 @@ class _HomePageState extends State<HomePage> {
                           children: [
                             Container(
                               padding: const EdgeInsets.all(10),
-                              margin: EdgeInsets.symmetric(vertical: 15),
+                              margin: const EdgeInsets.symmetric(vertical: 15),
                               child: const Icon(
                                 Icons.shopping_cart_outlined,
                                 color: Colors.black,
@@ -90,12 +90,60 @@ class _HomePageState extends State<HomePage> {
                               decoration: BoxDecoration(
                                   border: Border.all(color: Colors.black12),
                                   borderRadius: BorderRadius.circular(10)),
-                            )
+                            ),
+                            Positioned(
+                                right: 0,
+                                top: 0,
+                                child: GestureDetector(
+                                  child: Container(
+                                    padding: const EdgeInsets.all(8),
+                                    decoration: const BoxDecoration(
+                                        color: Color(0xfff95f60),
+                                        shape: BoxShape.circle),
+                                    child: const Text(
+                                      "0",
+                                      style: TextStyle(
+                                          fontSize: 16, color: Colors.white),
+                                    ),
+                                  ),
+                                ))
                           ]),
                     ],
                   )
                 ],
-              ))
+              )),
+          const SizedBox(
+            height: 35,
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 30),
+            child: const Text(
+              "Let's find the best food around you",
+              style: TextStyle(
+                  fontSize: 35,
+                  fontWeight: FontWeight.bold,
+                  letterSpacing: -0.4),
+            ),
+          ),
+          const SizedBox(
+            height: 25,
+          ),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 30),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Text(
+                  "Find By Category",
+                  style: TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.black),
+                )
+              ],
+            ),
+          )
         ],
       ),
     );
