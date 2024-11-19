@@ -126,6 +126,16 @@ class FoodWidget extends StatelessWidget {
                     ),
                   ],
                 ),
+                SizedBox(
+                  height: 20,
+                ),
+                Text(
+                  "\$ ${(food.price).toStringAsFixed(2)}",
+                  style: const TextStyle(
+                      color: Colors.black,
+                      fontSize: 25,
+                      fontWeight: FontWeight.bold),
+                )
               ],
             ),
           ),
