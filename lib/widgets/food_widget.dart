@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:food_delivery_app/foods.dart';
 
 class FoodWidget extends StatelessWidget {
@@ -25,8 +26,32 @@ class FoodWidget extends StatelessWidget {
             color: Colors.white,
             borderRadius: BorderRadius.circular(10),
           ),
-          child: const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 15),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 15),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(
+                  height: 160,
+                  child: Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      Positioned(
+                          child: Container(
+                        height: 50,
+                        width: 100,
+                        decoration:
+                            BoxDecoration(shape: BoxShape.circle, boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.3),
+                          )
+                        ]),
+                      ))
+                    ],
+                  ),
+                )
+              ],
+            ),
           ),
         )
       ],
