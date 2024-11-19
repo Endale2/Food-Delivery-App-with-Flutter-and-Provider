@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery_app/categories.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -8,108 +9,13 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  int selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Column(
         children: [
-          Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 30),
-              child: Row(
-                children: [
-                  const Expanded(
-                      child: Column(
-                    children: [
-                      Row(
-                        children: [
-                          Text(
-                            "Your Location",
-                            style: TextStyle(
-                                color: Colors.black45,
-                                fontSize: 16,
-                                fontWeight: FontWeight.w600),
-                          ),
-                          Icon(
-                            Icons.keyboard_arrow_down,
-                            color: Colors.black45,
-                            size: 20,
-                          ),
-                        ],
-                      ),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      Row(
-                        children: [
-                          Icon(
-                            Icons.location_on,
-                            color: Colors.orange,
-                            size: 20,
-                          ),
-                          SizedBox(
-                            width: 5,
-                          ),
-                          Text(
-                            "Addis Ababa, Ethiopia",
-                            style: TextStyle(
-                                fontSize: 16,
-                                color: Colors.black,
-                                fontWeight: FontWeight.w600),
-                          )
-                        ],
-                      )
-                    ],
-                  )),
-                  Row(
-                    children: [
-                      Container(
-                        padding: const EdgeInsets.all(10),
-                        child: const Icon(
-                          Icons.search,
-                          color: Colors.black,
-                        ),
-                        decoration: BoxDecoration(
-                            border: Border.all(color: Colors.black12),
-                            borderRadius: BorderRadius.circular(10)),
-                      ),
-                      const SizedBox(
-                        width: 10,
-                      ),
-                      Stack(
-                          alignment: AlignmentDirectional.topCenter,
-                          children: [
-                            Container(
-                              padding: const EdgeInsets.all(10),
-                              margin: const EdgeInsets.symmetric(vertical: 15),
-                              child: Icon(
-                                Icons.shopping_cart_outlined,
-                                color: Colors.black,
-                              ),
-                              decoration: BoxDecoration(
-                                  border: Border.all(color: Colors.black12),
-                                  borderRadius: BorderRadius.circular(10)),
-                            ),
-                            Positioned(
-                                right: 0,
-                                top: 0,
-                                child: GestureDetector(
-                                  child: Container(
-                                    padding: const EdgeInsets.all(8),
-                                    decoration: const BoxDecoration(
-                                        color: Color(0xfff95f60),
-                                        shape: BoxShape.circle),
-                                    child: const Text(
-                                      "0",
-                                      style: TextStyle(
-                                          fontSize: 16, color: Colors.white),
-                                    ),
-                                  ),
-                                ))
-                          ]),
-                    ],
-                  )
-                ],
-              )),
+          headersPart(),
           const SizedBox(
             height: 35,
           ),
@@ -139,12 +45,178 @@ class _HomePageState extends State<HomePage> {
                       fontWeight: FontWeight.w600,
                       color: Colors.black),
                 ),
-                Text("See All")
+                Text("see all",
+                    style: TextStyle(
+                      color: Colors.orange,
+                    )),
+              ],
+            ),
+          ),
+          const SizedBox(
+            height: 25,
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 30),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                ...List.generate(
+                    categories.length,
+                    (index) => GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              selectedIndex = index;
+                            });
+                          },
+                          child: Container(
+                            height: 110,
+                            width: 90,
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(10),
+                                border: selectedIndex == index
+                                    ? Border.all(
+                                        width: 2.4, color: Colors.orange)
+                                    : Border.all(color: Colors.white)),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Stack(
+                                  alignment: AlignmentDirectional.center,
+                                  children: [
+                                    Container(
+                                      height: 30,
+                                      width: 50,
+                                      decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        boxShadow: [
+                                          BoxShadow(
+                                              color:
+                                                  Colors.black.withOpacity(0.4),
+                                              offset: const Offset(0, 10),
+                                              blurRadius: 12,
+                                              spreadRadius: 5)
+                                        ],
+                                      ),
+                                    ),
+                                    Image.asset(categories[index].image,
+                                        width: 50, fit: BoxFit.cover),
+                                  ],
+                                ),
+                                const SizedBox(
+                                  height: 20,
+                                ),
+                                Text(
+                                  categories[index].name,
+                                  style: const TextStyle(
+                                      fontWeight: FontWeight.w600,
+                                      color: Colors.black),
+                                )
+                              ],
+                            ),
+                          ),
+                        ))
               ],
             ),
           )
         ],
       ),
     );
+  }
+
+  Padding headersPart() {
+    return Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 30),
+        child: Row(
+          children: [
+            const Expanded(
+                child: Column(
+              children: [
+                Row(
+                  children: [
+                    Text(
+                      "Your Location",
+                      style: TextStyle(
+                          color: Colors.black45,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600),
+                    ),
+                    Icon(
+                      Icons.keyboard_arrow_down,
+                      color: Colors.black45,
+                      size: 20,
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 5,
+                ),
+                Row(
+                  children: [
+                    Icon(
+                      Icons.location_on,
+                      color: Colors.orange,
+                      size: 20,
+                    ),
+                    SizedBox(
+                      width: 5,
+                    ),
+                    Text(
+                      "Addis Ababa, Ethiopia",
+                      style: TextStyle(
+                          fontSize: 16,
+                          color: Colors.black,
+                          fontWeight: FontWeight.w600),
+                    )
+                  ],
+                )
+              ],
+            )),
+            Row(
+              children: [
+                Container(
+                  padding: const EdgeInsets.all(10),
+                  child: const Icon(
+                    Icons.search,
+                    color: Colors.black,
+                  ),
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Colors.black12),
+                      borderRadius: BorderRadius.circular(10)),
+                ),
+                const SizedBox(
+                  width: 10,
+                ),
+                Stack(alignment: AlignmentDirectional.topCenter, children: [
+                  Container(
+                    padding: const EdgeInsets.all(10),
+                    margin: const EdgeInsets.symmetric(vertical: 15),
+                    child: Icon(
+                      Icons.shopping_cart_outlined,
+                      color: Colors.black,
+                    ),
+                    decoration: BoxDecoration(
+                        border: Border.all(color: Colors.black12),
+                        borderRadius: BorderRadius.circular(10)),
+                  ),
+                  Positioned(
+                      right: 0,
+                      top: 0,
+                      child: GestureDetector(
+                        child: Container(
+                          padding: const EdgeInsets.all(8),
+                          decoration: const BoxDecoration(
+                              color: Color(0xfff95f60), shape: BoxShape.circle),
+                          child: const Text(
+                            "0",
+                            style: TextStyle(fontSize: 16, color: Colors.white),
+                          ),
+                        ),
+                      ))
+                ]),
+              ],
+            )
+          ],
+        ));
   }
 }
