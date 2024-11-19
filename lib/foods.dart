@@ -20,7 +20,7 @@ List<FoodModel> foods = [
   FoodModel(
     image: "lib/images/foods/sapporo_miso.png",
     name: 'Sapporo Miso',
-    price: 3.9,
+    price: 390,
     rate: 5.0,
     distance: 150,
     category: 'Ramen',
@@ -28,7 +28,7 @@ List<FoodModel> foods = [
   FoodModel(
     image: "lib/images/foods/cheese_burger.png",
     name: 'Cheese Burger',
-    price: 5.5,
+    price: 550,
     rate: 4.8,
     distance: 200,
     category: 'Burgers',
@@ -36,7 +36,7 @@ List<FoodModel> foods = [
   FoodModel(
     image: 'lib/images/foods/caesar_salad.png',
     name: 'Caesar Salad',
-    price: 4.2,
+    price: 420,
     rate: 4.5,
     distance: 120,
     category: 'Salad',
@@ -44,7 +44,7 @@ List<FoodModel> foods = [
   FoodModel(
     image: 'lib/images/foods/classic_waffle.png',
     name: 'Classic Waffle',
-    price: 3.5,
+    price: 350,
     rate: 4.7,
     distance: 100,
     category: 'Waffle',
@@ -52,7 +52,7 @@ List<FoodModel> foods = [
   FoodModel(
     image: 'lib/images/foods/',
     name: 'Kurume Ramen',
-    price: 4.3,
+    price: 430,
     rate: 4.9,
     distance: 600,
     category: 'Ramen',
@@ -60,7 +60,7 @@ List<FoodModel> foods = [
   FoodModel(
     image: 'lib/images/foods/',
     name: 'Bacon Burger',
-    price: 6.0,
+    price: 600,
     rate: 4.6,
     distance: 250,
     category: 'Burgers',
@@ -68,7 +68,7 @@ List<FoodModel> foods = [
   FoodModel(
     image: 'lib/images/foods/',
     name: 'Greek Salad',
-    price: 4.0,
+    price: 400.0,
     rate: 4.4,
     distance: 180,
     category: 'Salad',
@@ -77,7 +77,7 @@ List<FoodModel> foods = [
     image: 'lib/images/foods/',
     name: 'Berry Waffle',
     price: 4.1,
-    rate: 4.8,
+    rate: 480,
     distance: 90,
     category: 'Waffle',
   ),

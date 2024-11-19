@@ -1,7 +1,5 @@
 import 'dart:math';
-
 import 'package:flutter/material.dart';
-
 import 'package:food_delivery_app/foods.dart';
 
 class FoodWidget extends StatelessWidget {
@@ -14,7 +12,7 @@ class FoodWidget extends StatelessWidget {
       alignment: AlignmentDirectional.topCenter,
       children: [
         Container(
-          height: 225,
+          height: 230,
           width: MediaQuery.of(context).size.width / 2.4,
           decoration: BoxDecoration(
             color: Colors.white,
@@ -22,21 +20,21 @@ class FoodWidget extends StatelessWidget {
           ),
         ),
         Container(
-          height: 225,
+          height: 250,
           width: MediaQuery.of(context).size.width / 2.4,
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(10),
           ),
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 15),
+            padding: const EdgeInsets.symmetric(horizontal: 10),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Transform.rotate(
                   angle: 10 * pi / 180,
                   child: SizedBox(
-                    height: 160,
+                    height: 150,
                     child: Stack(
                       alignment: Alignment.center,
                       children: [
@@ -59,7 +57,7 @@ class FoodWidget extends StatelessWidget {
                         ),
                         Image.asset(
                           food.image,
-                          height: 150,
+                          height: 140,
                           fit: BoxFit.contain,
                         ),
                       ],
@@ -67,22 +65,20 @@ class FoodWidget extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(
-                  height: 10,
+                  height: 5,
                 ),
-                Flexible(
-                  child: Text(
-                    food.name,
-                    style: const TextStyle(
-                      fontSize: 19,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
-                    ),
-                    overflow: TextOverflow.ellipsis,
-                    maxLines: 1,
+                Text(
+                  food.name,
+                  style: const TextStyle(
+                    fontSize: 17,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
                   ),
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 1,
                 ),
                 const SizedBox(
-                  height: 10,
+                  height: 5,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -92,15 +88,16 @@ class FoodWidget extends StatelessWidget {
                         const Icon(
                           Icons.star_rate_rounded,
                           color: Colors.yellow,
-                          size: 22,
+                          size: 20,
                         ),
                         const SizedBox(
-                          width: 5,
+                          width: 3,
                         ),
                         Text(
                           food.rate.toString(),
-                          style:
-                              TextStyle(color: Colors.black.withOpacity(0.5)),
+                          style: TextStyle(
+                            color: Colors.black.withOpacity(0.5),
+                          ),
                         ),
                       ],
                     ),
@@ -109,10 +106,10 @@ class FoodWidget extends StatelessWidget {
                         const Icon(
                           Icons.location_on,
                           color: Colors.pink,
-                          size: 16,
+                          size: 14,
                         ),
                         const SizedBox(
-                          width: 5,
+                          width: 3,
                         ),
                         Text(
                           "${food.distance}m",
@@ -126,16 +123,17 @@ class FoodWidget extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(
-                  height: 20,
+                const SizedBox(
+                  height: 8,
                 ),
                 Text(
-                  "\$ ${(food.price).toStringAsFixed(2)}",
+                  "ETB ${(food.price).toString()}",
                   style: const TextStyle(
-                      color: Colors.black,
-                      fontSize: 25,
-                      fontWeight: FontWeight.bold),
-                )
+                    color: Colors.black,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
               ],
             ),
           ),

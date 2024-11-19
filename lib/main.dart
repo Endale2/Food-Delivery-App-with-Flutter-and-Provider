@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:food_delivery_app/pages/app_on_board_page.dart';
 
 //19.40
+//33:29
 void main() {
   runApp(const MyApp());
 }
