@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app/categories.dart';
+import 'package:food_delivery_app/foods.dart';
+import 'package:food_delivery_app/widgets/food_widget.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -14,6 +16,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           headersPart(),
           const SizedBox(
@@ -115,6 +118,38 @@ class _HomePageState extends State<HomePage> {
                               ],
                             ),
                           ),
+                        ))
+              ],
+            ),
+          ),
+          const SizedBox(
+            height: 25,
+          ),
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 30),
+            child: Text(
+              "Results (37)",
+              style: TextStyle(
+                  color: Colors.black45,
+                  fontWeight: FontWeight.bold,
+                  letterSpacing: -.2),
+            ),
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            physics: BouncingScrollPhysics(),
+            child: Row(
+              children: [
+                ...List.generate(
+                    foods.length,
+                    (index) => Padding(
+                          padding: index == 0
+                              ? const EdgeInsets.only(left: 25, right: 25)
+                              : const EdgeInsets.only(right: 25),
+                          child: FoodWidget(food: foods[index]),
                         ))
               ],
             ),
