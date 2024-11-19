@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -83,7 +81,7 @@ class _HomePageState extends State<HomePage> {
                             Container(
                               padding: const EdgeInsets.all(10),
                               margin: const EdgeInsets.symmetric(vertical: 15),
-                              child: const Icon(
+                              child: Icon(
                                 Icons.shopping_cart_outlined,
                                 color: Colors.black,
                               ),
@@ -115,9 +113,9 @@ class _HomePageState extends State<HomePage> {
           const SizedBox(
             height: 35,
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 30),
-            child: const Text(
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 30),
+            child: Text(
               "Let's find the best food around you",
               style: TextStyle(
                   fontSize: 35,
@@ -128,7 +126,7 @@ class _HomePageState extends State<HomePage> {
           const SizedBox(
             height: 25,
           ),
-          Padding(
+          const Padding(
             padding: EdgeInsets.symmetric(horizontal: 30),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -140,7 +138,8 @@ class _HomePageState extends State<HomePage> {
                       fontSize: 22,
                       fontWeight: FontWeight.w600,
                       color: Colors.black),
-                )
+                ),
+                Text("See All")
               ],
             ),
           )
