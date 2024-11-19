@@ -18,7 +18,7 @@ class FoodModel {
 
 List<FoodModel> foods = [
   FoodModel(
-    image: 'lib/images/foods/sapporo_miso.png',
+    image: "lib/images/foods/sapporo_miso.png",
     name: 'Sapporo Miso',
     price: 3.9,
     rate: 5.0,
@@ -26,7 +26,7 @@ List<FoodModel> foods = [
     category: 'Ramen',
   ),
   FoodModel(
-    image: 'lib/images/foods/cheese_burger.png',
+    image: "lib/images/foods/cheese_burger.png",
     name: 'Cheese Burger',
     price: 5.5,
     rate: 4.8,
