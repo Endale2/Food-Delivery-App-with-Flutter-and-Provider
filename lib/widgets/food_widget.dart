@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+
 import 'package:food_delivery_app/foods.dart';
 
 class FoodWidget extends StatelessWidget {
@@ -41,24 +41,27 @@ class FoodWidget extends StatelessWidget {
                       alignment: Alignment.center,
                       children: [
                         Positioned(
-                            bottom: 0,
-                            child: Container(
-                              height: 50,
-                              width: 100,
-                              decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.black.withOpacity(0.3),
-                                      spreadRadius: 10,
-                                      blurRadius: 30,
-                                    )
-                                  ]),
-                            )),
+                          bottom: 0,
+                          child: Container(
+                            height: 50,
+                            width: 100,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.black.withOpacity(0.3),
+                                  spreadRadius: 10,
+                                  blurRadius: 30,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
                         Image.asset(
                           food.image,
                           height: 150,
-                        )
+                          fit: BoxFit.contain,
+                        ),
                       ],
                     ),
                   ),
@@ -66,60 +69,67 @@ class FoodWidget extends StatelessWidget {
                 const SizedBox(
                   height: 10,
                 ),
-                Text(
-                  food.name,
-                  style: const TextStyle(
+                Flexible(
+                  child: Text(
+                    food.name,
+                    style: const TextStyle(
                       fontSize: 19,
                       fontWeight: FontWeight.bold,
-                      color: Colors.black),
-                  overflow: TextOverflow.ellipsis,
+                      color: Colors.black,
+                    ),
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 1,
+                  ),
                 ),
                 const SizedBox(
                   height: 10,
                 ),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Row(
                       children: [
-                        Icon(
+                        const Icon(
                           Icons.star_rate_rounded,
                           color: Colors.yellow,
                           size: 22,
                         ),
                         const SizedBox(
-                          height: 5,
+                          width: 5,
                         ),
                         Text(
                           food.rate.toString(),
                           style:
                               TextStyle(color: Colors.black.withOpacity(0.5)),
-                        )
+                        ),
                       ],
-                    ),
-                    const SizedBox(
-                      height: 10,
                     ),
                     Row(
                       children: [
-                        Icon(
+                        const Icon(
                           Icons.location_on,
                           color: Colors.pink,
-                          size: 5,
+                          size: 16,
                         ),
                         const SizedBox(
-                          height: 5,
+                          width: 5,
                         ),
                         Text(
                           "${food.distance}m",
-                        )
+                          style: const TextStyle(
+                            fontSize: 12,
+                          ),
+                          overflow: TextOverflow.ellipsis,
+                          maxLines: 1,
+                        ),
                       ],
-                    )
+                    ),
                   ],
-                )
+                ),
               ],
             ),
           ),
-        )
+        ),
       ],
     );
   }
