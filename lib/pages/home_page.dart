@@ -12,6 +12,27 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int selectedIndex = 0;
+  List<FoodModel> myfood = [];
+  String category = '';
+  @override
+  void initState() {
+    super.initState();
+    if (categories.isEmpty) {
+      category = categories[0].name;
+      filterFoodByCategory(category);
+    }
+  }
+
+  void filterFoodByCategory(String selectedCategory) {
+    setState(() {
+      category = selectedCategory;
+      myfood = foods
+          .where((element) =>
+              element.category.toLowerCase() == selectedCategory.toLowerCase())
+          .toList();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
