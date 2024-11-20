@@ -31,7 +31,7 @@ List<FoodModel> foods = [
     price: 550,
     rate: 4.8,
     distance: 200,
-    category: 'Burgers',
+    category: 'Burger',
   ),
   FoodModel(
     image: 'lib/images/foods/caesar_salad.png',
@@ -63,7 +63,7 @@ List<FoodModel> foods = [
     price: 600,
     rate: 4.6,
     distance: 250,
-    category: 'Burgers',
+    category: 'Burger',
   ),
   FoodModel(
     image: 'lib/images/foods/',
@@ -76,8 +76,8 @@ List<FoodModel> foods = [
   FoodModel(
     image: 'lib/images/foods/',
     name: 'Berry Waffle',
-    price: 4.1,
-    rate: 480,
+    price: 420,
+    rate: 4.8,
     distance: 90,
     category: 'Waffle',
   ),

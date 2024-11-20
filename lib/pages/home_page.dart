@@ -11,16 +11,14 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int selectedIndex = 0;
   List<FoodModel> myfood = [];
   String category = '';
   @override
   void initState() {
     super.initState();
-    if (categories.isEmpty) {
-      category = categories[0].name;
-      filterFoodByCategory(category);
-    }
+
+    category = categories.isNotEmpty ? categories[0].name : '';
+    filterFoodByCategory(category);
   }
 
   void filterFoodByCategory(String selectedCategory) {
@@ -91,8 +89,8 @@ class _HomePageState extends State<HomePage> {
                             filterFoodByCategory(categories[index].name);
                           },
                           child: Container(
-                            height: 110,
-                            width: 80,
+                            height: 100,
+                            width: 70,
                             decoration: BoxDecoration(
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(10),
@@ -163,12 +161,12 @@ class _HomePageState extends State<HomePage> {
             child: Row(
               children: [
                 ...List.generate(
-                    foods.length,
+                    myfood.length,
                     (index) => Padding(
                           padding: index == 0
                               ? const EdgeInsets.only(left: 25, right: 25)
                               : const EdgeInsets.only(right: 25),
-                          child: FoodWidget(food: foods[index]),
+                          child: FoodWidget(food: myfood[index]),
                         ))
               ],
             ),
