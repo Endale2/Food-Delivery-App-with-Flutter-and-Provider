@@ -69,13 +69,13 @@ class FoodWidget extends StatelessWidget {
                 ),
                 Text(
                   food.name,
+                  maxLines: 1,
                   style: const TextStyle(
                     fontSize: 17,
                     fontWeight: FontWeight.bold,
                     color: Colors.black,
                   ),
                   overflow: TextOverflow.ellipsis,
-                  maxLines: 1,
                 ),
                 const SizedBox(
                   height: 5,
@@ -138,6 +138,27 @@ class FoodWidget extends StatelessWidget {
             ),
           ),
         ),
+        Positioned(
+          bottom: 0,
+          right: 0,
+          child: GestureDetector(
+            onTap: () {},
+            child: Container(
+              padding: const EdgeInsets.all(12),
+              decoration: const BoxDecoration(
+                color: Colors.black,
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(10),
+                    bottomRight: Radius.circular(10)),
+              ),
+              child: const Icon(
+                Icons.shopping_cart_outlined,
+                color: Colors.white,
+                size: 25,
+              ),
+            ),
+          ),
+        )
       ],
     );
   }
