@@ -88,9 +88,7 @@ class _HomePageState extends State<HomePage> {
                     categories.length,
                     (index) => GestureDetector(
                           onTap: () {
-                            setState(() {
-                              selectedIndex = index;
-                            });
+                            filterFoodByCategory(categories[index].name);
                           },
                           child: Container(
                             height: 110,
@@ -98,7 +96,7 @@ class _HomePageState extends State<HomePage> {
                             decoration: BoxDecoration(
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(10),
-                                border: selectedIndex == index
+                                border: category == categories[index].name
                                     ? Border.all(
                                         width: 2.4, color: Colors.orange)
                                     : Border.all(color: Colors.white)),
@@ -146,11 +144,11 @@ class _HomePageState extends State<HomePage> {
           const SizedBox(
             height: 25,
           ),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 30),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 30),
             child: Text(
-              "Results (37)",
-              style: TextStyle(
+              "Results ( ${myfood.length})",
+              style: const TextStyle(
                   color: Colors.black45,
                   fontWeight: FontWeight.bold,
                   letterSpacing: -.2),
@@ -161,7 +159,7 @@ class _HomePageState extends State<HomePage> {
           ),
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
-            physics: BouncingScrollPhysics(),
+            physics: const BouncingScrollPhysics(),
             child: Row(
               children: [
                 ...List.generate(
