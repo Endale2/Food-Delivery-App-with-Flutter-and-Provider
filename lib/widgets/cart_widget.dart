@@ -24,9 +24,21 @@ class CartWidget extends StatelessWidget {
                       onTap: () {
                         Navigator.pop(context);
                       },
+                      child: Icon(
+                        Icons.arrow_back,
+                        color: Colors.black,
+                      ),
                     ),
                   ),
-                )
+                ),
+                const Text(
+                  "My Cart",
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.w600,
+                      fontSize: 22),
+                ),
+                const SizedBox()
               ],
             ),
           ),
