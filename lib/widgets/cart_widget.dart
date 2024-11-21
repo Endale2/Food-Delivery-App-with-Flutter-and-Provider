@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app/cart.dart';
 import 'package:food_delivery_app/provider/cart_provider.dart';
+import 'package:food_delivery_app/widgets/cart_items.dart';
 import 'package:provider/provider.dart';
 
 class CartWidget extends StatelessWidget {
@@ -11,7 +12,7 @@ class CartWidget extends StatelessWidget {
     CartProvider cartProvider = Provider.of<CartProvider>(context);
     List<CartModel> cartItems = cartProvider.carts.reversed.toList();
     return Scaffold(
-      backgroundColor: Colors.white24,
+      backgroundColor: Colors.white70,
       body: SafeArea(
           child: Column(
         children: [
@@ -67,7 +68,7 @@ class CartWidget extends StatelessWidget {
                               bottom: 30),
                           child: Stack(
                             alignment: Alignment.bottomCenter,
-                            children: [],
+                            children: [CartItems(cart: cartItems[index])],
                           ),
                         ))
               ],
