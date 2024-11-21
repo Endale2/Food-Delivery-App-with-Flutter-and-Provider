@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:food_delivery_app/categories.dart';
 import 'package:food_delivery_app/foods.dart';
 import 'package:food_delivery_app/provider/cart_provider.dart';
+import 'package:food_delivery_app/widgets/cart_widget.dart';
 import 'package:food_delivery_app/widgets/food_widget.dart';
 import 'package:provider/provider.dart';
 
@@ -259,6 +260,12 @@ class _HomePageState extends State<HomePage> {
                   right: 0,
                   top: 0,
                   child: GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const CartWidget()));
+                    },
                     child: Container(
                       padding: const EdgeInsets.all(8),
                       decoration: const BoxDecoration(
