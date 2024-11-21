@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app/pages/app_on_board_page.dart';
+import 'package:food_delivery_app/provider/cart_provider.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,9 +12,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: AppOnBoardPage(),
+    return MultiProvider(
+      providers: [ChangeNotifierProvider(create: (_) => CartProvider())],
+      child: const MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: AppOnBoardPage(),
+      ),
     );
   }
 }
