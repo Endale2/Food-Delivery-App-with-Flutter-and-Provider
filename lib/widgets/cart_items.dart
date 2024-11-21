@@ -25,13 +25,19 @@ class CartItems extends StatelessWidget {
             decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
           ),
           Positioned(
+              top: -5,
+              left: 0,
               child: Transform.rotate(
-            angle: 10 * pi / 180,
-            child: SizedBox(
-              height: 130,
-              width: 130,
-            ),
-          ))
+                angle: 10 * pi / 180,
+                child: SizedBox(
+                  height: 130,
+                  width: 130,
+                  child: Stack(
+                    alignment: AlignmentDirectional.center,
+                    children: [Positioned(child: Container())],
+                  ),
+                ),
+              ))
         ],
       ),
     );
