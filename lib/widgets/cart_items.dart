@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app/cart.dart';
 import 'package:food_delivery_app/provider/cart_provider.dart';
@@ -22,6 +24,14 @@ class CartItems extends StatelessWidget {
             width: size.width - 50,
             decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
           ),
+          Positioned(
+              child: Transform.rotate(
+            angle: 10 * pi / 180,
+            child: SizedBox(
+              height: 130,
+              width: 130,
+            ),
+          ))
         ],
       ),
     );
