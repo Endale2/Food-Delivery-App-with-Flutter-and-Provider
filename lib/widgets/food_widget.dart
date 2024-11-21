@@ -1,13 +1,17 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app/foods.dart';
+import 'package:food_delivery_app/provider/cart_provider.dart';
+import 'package:provider/provider.dart';
 
 class FoodWidget extends StatelessWidget {
   final FoodModel food;
+
   const FoodWidget({super.key, required this.food});
 
   @override
   Widget build(BuildContext context) {
+    CartProvider cartProvider = Provider.of<CartProvider>(context);
     return Stack(
       alignment: AlignmentDirectional.topCenter,
       children: [
@@ -142,7 +146,9 @@ class FoodWidget extends StatelessWidget {
           bottom: 0,
           right: 0,
           child: GestureDetector(
-            onTap: () {},
+            onTap: () {
+              cartProvider.addCart(food);
+            },
             child: Container(
               padding: const EdgeInsets.all(12),
               decoration: const BoxDecoration(

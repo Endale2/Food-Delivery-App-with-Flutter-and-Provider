@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app/categories.dart';
 import 'package:food_delivery_app/foods.dart';
+import 'package:food_delivery_app/provider/cart_provider.dart';
 import 'package:food_delivery_app/widgets/food_widget.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -33,6 +35,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    CartProvider cartProvider = Provider.of<CartProvider>(context);
     return SafeArea(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -178,11 +181,11 @@ class _HomePageState extends State<HomePage> {
 
   Padding headersPart() {
     return Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 30),
-        child: Row(
-          children: [
-            const Expanded(
-                child: Column(
+      padding: const EdgeInsets.symmetric(horizontal: 30),
+      child: Row(
+        children: [
+          const Expanded(
+            child: Column(
               children: [
                 Row(
                   children: [
@@ -221,54 +224,58 @@ class _HomePageState extends State<HomePage> {
                           fontWeight: FontWeight.w600),
                     )
                   ],
-                )
+                ),
               ],
-            )),
-            Row(
-              children: [
+            ),
+          ),
+          Row(
+            children: [
+              Container(
+                padding: const EdgeInsets.all(10),
+                child: const Icon(
+                  Icons.search,
+                  color: Colors.black,
+                ),
+                decoration: BoxDecoration(
+                    border: Border.all(color: Colors.black12),
+                    borderRadius: BorderRadius.circular(10)),
+              ),
+              const SizedBox(
+                width: 10,
+              ),
+              Stack(alignment: AlignmentDirectional.topCenter, children: [
                 Container(
                   padding: const EdgeInsets.all(10),
+                  margin: const EdgeInsets.symmetric(vertical: 15),
                   child: const Icon(
-                    Icons.search,
+                    Icons.shopping_cart_outlined,
                     color: Colors.black,
                   ),
                   decoration: BoxDecoration(
                       border: Border.all(color: Colors.black12),
                       borderRadius: BorderRadius.circular(10)),
                 ),
-                const SizedBox(
-                  width: 10,
-                ),
-                Stack(alignment: AlignmentDirectional.topCenter, children: [
-                  Container(
-                    padding: const EdgeInsets.all(10),
-                    margin: const EdgeInsets.symmetric(vertical: 15),
-                    child: Icon(
-                      Icons.shopping_cart_outlined,
-                      color: Colors.black,
+                Positioned(
+                  right: 0,
+                  top: 0,
+                  child: GestureDetector(
+                    child: Container(
+                      padding: const EdgeInsets.all(8),
+                      decoration: const BoxDecoration(
+                          color: Color(0xfff95f60), shape: BoxShape.circle),
+                      child: Text(
+                        '${Provider.of<CartProvider>(context).carts.length}',
+                        style:
+                            const TextStyle(fontSize: 16, color: Colors.white),
+                      ),
                     ),
-                    decoration: BoxDecoration(
-                        border: Border.all(color: Colors.black12),
-                        borderRadius: BorderRadius.circular(10)),
                   ),
-                  Positioned(
-                      right: 0,
-                      top: 0,
-                      child: GestureDetector(
-                        child: Container(
-                          padding: const EdgeInsets.all(8),
-                          decoration: const BoxDecoration(
-                              color: Color(0xfff95f60), shape: BoxShape.circle),
-                          child: const Text(
-                            "0",
-                            style: TextStyle(fontSize: 16, color: Colors.white),
-                          ),
-                        ),
-                      ))
-                ]),
-              ],
-            )
-          ],
-        ));
+                ),
+              ]),
+            ],
+          )
+        ],
+      ),
+    );
   }
 }
