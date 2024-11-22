@@ -12,70 +12,72 @@ class CartWidget extends StatelessWidget {
     CartProvider cartProvider = Provider.of<CartProvider>(context);
     List<CartModel> cartItems = cartProvider.carts.reversed.toList();
     return Scaffold(
-      backgroundColor: Colors.white70,
+      backgroundColor: Colors.white,
       body: SafeArea(
-          child: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 25),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Container(
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.black12),
-                      borderRadius: BorderRadius.circular(5)),
-                  child: Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: GestureDetector(
-                      onTap: () {
-                        Navigator.pop(context);
-                      },
-                      child: Icon(
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 15),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                        border: Border.all(color: Colors.black12),
+                        borderRadius: BorderRadius.circular(5),
+                        color: Colors.grey.shade200,
+                      ),
+                      padding: const EdgeInsets.all(8.0),
+                      child: const Icon(
                         Icons.arrow_back,
                         color: Colors.black,
                       ),
                     ),
                   ),
-                ),
-                const Text(
-                  "My Cart",
-                  style: TextStyle(
+                  const Text(
+                    "My Cart",
+                    style: TextStyle(
                       color: Colors.black,
-                      fontWeight: FontWeight.w600,
-                      fontSize: 22),
-                ),
-                const SizedBox()
-              ],
+                      fontWeight: FontWeight.bold,
+                      fontSize: 22,
+                    ),
+                  ),
+                  const SizedBox(width: 40),
+                ],
+              ),
             ),
-          ),
-          Expanded(
+            Expanded(
               child: SingleChildScrollView(
-            scrollDirection: Axis.vertical,
-            physics: BouncingScrollPhysics(),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                ...List.generate(
+                physics: const BouncingScrollPhysics(),
+                child: Column(
+                  children: List.generate(
                     cartItems.length,
                     (index) => Container(
-                          height: 145,
-                          width: MediaQuery.of(context).size.width,
-                          margin: EdgeInsets.only(
-                              top: index == 0 ? 30 : 0,
-                              right: 25,
-                              left: 25,
-                              bottom: 30),
-                          child: Stack(
-                            alignment: Alignment.bottomCenter,
-                            children: [CartItems(cart: cartItems[index])],
-                          ),
-                        ))
-              ],
+                      height: 160,
+                      width: MediaQuery.of(context).size.width,
+                      margin: EdgeInsets.only(
+                        top: index == 0 ? 20 : 0,
+                        right: 20,
+                        left: 20,
+                        bottom: 20,
+                      ),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: Colors.white,
+                      ),
+                      child: CartItems(cart: cartItems[index]),
+                    ),
+                  ),
+                ),
+              ),
             ),
-          ))
-        ],
-      )),
+          ],
+        ),
+      ),
     );
   }
 }

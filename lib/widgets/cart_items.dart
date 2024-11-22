@@ -104,7 +104,7 @@ class CartItems extends StatelessWidget {
                         ),
                       ],
                     ),
-                    const SizedBox(width: 20),
+                    const SizedBox(width: 15),
                     Row(
                       children: [
                         const Icon(
@@ -152,9 +152,9 @@ class CartItems extends StatelessWidget {
                               width: 30,
                               height: 30,
                               decoration: const BoxDecoration(
-                                color: Colors.red,
-                                shape: BoxShape.circle,
-                              ),
+                                  color: Colors.black,
+                                  borderRadius: BorderRadius.vertical(
+                                      top: Radius.circular(7))),
                               child: const Icon(
                                 Icons.remove,
                                 size: 20,
@@ -162,7 +162,7 @@ class CartItems extends StatelessWidget {
                               ),
                             ),
                           ),
-                          const SizedBox(width: 10),
+                          const SizedBox(width: 5),
                           Text(
                             cart.quantity.toString(),
                             style: const TextStyle(
@@ -171,7 +171,7 @@ class CartItems extends StatelessWidget {
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                          const SizedBox(width: 10),
+                          const SizedBox(width: 5),
                           GestureDetector(
                             onTap: () {
                               cartProvider.addCart(cart.foods);
@@ -180,9 +180,9 @@ class CartItems extends StatelessWidget {
                               width: 30,
                               height: 30,
                               decoration: const BoxDecoration(
-                                color: Colors.green,
-                                shape: BoxShape.circle,
-                              ),
+                                  color: Colors.black,
+                                  borderRadius: BorderRadius.vertical(
+                                      top: Radius.circular(7))),
                               child: const Icon(
                                 Icons.add,
                                 size: 20,
