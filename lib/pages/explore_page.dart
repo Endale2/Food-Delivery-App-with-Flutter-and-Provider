@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:animate_do/animate_do.dart';
+import 'package:food_delivery_app/categories.dart';
 
 class ExplorePage extends StatelessWidget {
   const ExplorePage({super.key});
@@ -68,7 +69,7 @@ class ExplorePage extends StatelessWidget {
                 height: 100,
                 child: ListView(
                   scrollDirection: Axis.horizontal,
-                  children: List.generate(6, (index) {
+                  children: List.generate(4, (index) {
                     return Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 8.0),
                       child: Column(
@@ -80,8 +81,7 @@ class ExplorePage extends StatelessWidget {
                               color: Colors.orange.shade100,
                               borderRadius: BorderRadius.circular(12),
                               image: DecorationImage(
-                                image: AssetImage(
-                                    'assets/images/category${index + 1}.jpg'), // Replace with your images
+                                image: AssetImage(categories[index].image),
                                 fit: BoxFit.cover,
                               ),
                             ),
@@ -89,12 +89,12 @@ class ExplorePage extends StatelessWidget {
                           const SizedBox(height: 4),
                           Text(
                             [
-                              "Pizza",
+                              "Ramen",
                               "Burgers",
-                              "Sushi",
-                              "Drinks",
+                              "Salad",
+                              "Waffle",
                               "Desserts",
-                              "Salads"
+                              "Drinks"
                             ][index],
                             style: const TextStyle(
                                 fontSize: 12, color: Colors.black),

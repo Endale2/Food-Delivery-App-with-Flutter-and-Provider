@@ -28,47 +28,45 @@ class _AppOnBoardPageState extends State<AppOnBoardPage> {
             },
             itemCount: onboards.length,
             itemBuilder: (context, index) {
-              return Stack(
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Positioned(
-                    top: -70,
-                    left: 0,
-                    right: 0,
-                    child: FadeInUp(
-                      delay: const Duration(milliseconds: 500),
-                      child: Image.asset(
-                        onboards[index].image,
-                        width: 600,
-                        height: 600,
-                        fit: BoxFit.contain,
+                  FadeInUp(
+                    delay: const Duration(milliseconds: 500),
+                    child: Image.asset(
+                      onboards[index].image,
+                      height: MediaQuery.of(context).size.height * 0.5,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+                  FadeInUp(
+                    delay: const Duration(milliseconds: 600),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      child: Text(
+                        onboards[index].text1,
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 32,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                   ),
-                  Positioned(
-                    top: MediaQuery.of(context).size.height / 1.9,
-                    child: FadeInUp(
-                      delay: const Duration(milliseconds: 500),
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 15),
-                        child: Column(
-                          children: [
-                            Text(
-                              onboards[index].text1,
-                              style: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 50,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            const SizedBox(height: 20),
-                            Text(
-                              onboards[index].text2,
-                              style: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 20,
-                              ),
-                            ),
-                          ],
+                  const SizedBox(height: 15),
+                  FadeInUp(
+                    delay: const Duration(milliseconds: 700),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 30),
+                      child: Text(
+                        onboards[index].text2,
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                          color: Colors.white70,
+                          fontSize: 16,
+                          height: 1.5,
                         ),
                       ),
                     ),
@@ -78,59 +76,67 @@ class _AppOnBoardPageState extends State<AppOnBoardPage> {
             },
           ),
           Positioned(
-            bottom: 170,
-            left: 25,
+            bottom: 100,
             child: FadeInUp(
-              delay: const Duration(milliseconds: 500),
+              delay: const Duration(milliseconds: 800),
               child: Row(
-                children: [
-                  ...List.generate(
-                    onboards.length,
-                    (index) => AnimatedContainer(
-                      duration: const Duration(milliseconds: 250),
-                      height: 5,
-                      width: 50,
-                      margin: const EdgeInsets.only(right: 10),
-                      decoration: BoxDecoration(
-                          color: currentIndex == index
-                              ? Colors.white
-                              : Colors.white.withOpacity(0.5),
-                          borderRadius: BorderRadius.circular(15)),
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: List.generate(
+                  onboards.length,
+                  (index) => AnimatedContainer(
+                    duration: const Duration(milliseconds: 300),
+                    height: 8,
+                    width: currentIndex == index ? 20 : 8,
+                    margin: const EdgeInsets.symmetric(horizontal: 5),
+                    decoration: BoxDecoration(
+                      color: currentIndex == index
+                          ? Colors.orange
+                          : Colors.white.withOpacity(0.5),
+                      borderRadius: BorderRadius.circular(10),
                     ),
                   ),
-                ],
+                ),
               ),
             ),
           ),
           Positioned(
-              bottom: 30,
-              child: FadeInUp(
-                delay: const Duration(milliseconds: 500),
-                child: SizedBox(
-                  height: 75,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                    child: MaterialButton(
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const MainPage()));
-                      },
-                      color: Colors.orange,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(15)),
-                      minWidth: MediaQuery.of(context).size.width - 50,
-                      child: const Center(
-                        child: Text(
-                          "Get Started",
-                          style: TextStyle(color: Colors.white, fontSize: 24),
-                        ),
-                      ),
+            bottom: 30,
+            child: FadeInUp(
+              delay: const Duration(milliseconds: 900),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 20,
+                ),
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const MainPage()),
+                    );
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.orange,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(25),
+                    ),
+                    padding: const EdgeInsets.symmetric(vertical: 18),
+                    minimumSize: Size(
+                      MediaQuery.of(context).size.width - 50,
+                      0,
+                    ),
+                  ),
+                  child: const Text(
+                    "Get Started",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
-              ))
+              ),
+            ),
+          ),
         ],
       ),
     );
