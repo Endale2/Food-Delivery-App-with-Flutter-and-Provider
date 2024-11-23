@@ -14,13 +14,42 @@ A beautifully designed Flutter application that replicates the user interface of
 
 ## Screenshots
 
-<!-- Add screenshots of your app here -->
+
 1. **Onboarding Pages**
+
+![photo_2024-11-23_23-13-59](https://github.com/user-attachments/assets/2d7315d8-c3fe-4029-9177-12f75589908e)
+
+
+
 2. **Login/Signup**
-3. **Food Categories and Filtering**
+
+![photo_2024-11-23_23-13-59 (2)](https://github.com/user-attachments/assets/2e6968e1-64b8-4263-99a0-0a07968252e1)
+
+![photo_2024-11-23_23-13-59 (3)](https://github.com/user-attachments/assets/c3895766-9178-4b55-9411-7ee6d7f1c2bc)
+
+
+
+3. **Home Page , Food Categories and Filtering**
+
+![photo_2024-11-23_23-13-58 (2)](https://github.com/user-attachments/assets/3e62d563-5825-4b15-a3ba-7b10275e3452)
+
 4. **Cart Management**
+
+
+![photo_2024-11-23_23-13-58 (5)](https://github.com/user-attachments/assets/26e2cba2-a7d4-46a0-9625-f69e3909af6a)
+
+
 5. **Messages Section**
+
+![photo_2024-11-23_23-13-58 (3)](https://github.com/user-attachments/assets/1e394efb-65e2-4c81-9583-2db933d81262)
+
+
+
+
 6. **Explore and Profile**
+
+![photo_2024-11-23_23-13-58 (4)](https://github.com/user-attachments/assets/f8d3a64c-32ec-4bcb-be25-bd07ddcb2f18)
+
 
 ## State Management
 
