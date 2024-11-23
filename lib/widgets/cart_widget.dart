@@ -69,7 +69,12 @@ class CartWidget extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10),
                         color: Colors.white,
                       ),
-                      child: CartItems(cart: cartItems[index]),
+                      child: Stack(
+                        alignment: Alignment.bottomCenter,
+                        children: [
+                          CartItems(cart: cartItems[index]),
+                        ],
+                      ),
                     ),
                   ),
                 ),
