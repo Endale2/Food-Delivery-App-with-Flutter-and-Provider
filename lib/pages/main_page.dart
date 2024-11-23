@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app/bottom_navbar_icons.dart';
+import 'package:food_delivery_app/pages/explore_page.dart';
 import 'package:food_delivery_app/pages/home_page.dart';
 import 'package:food_delivery_app/pages/messages_page.dart';
+import 'package:food_delivery_app/pages/profile_page.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -14,8 +16,8 @@ class _MainPageState extends State<MainPage> {
   final List pages = [
     const HomePage(),
     const MessagesPage(),
-    const Center(child: Text("Explore page")),
-    const Center(child: Text("Profile page"))
+    const ExplorePage(),
+    const ProfilePage()
   ];
   @override
   Widget build(BuildContext context) {

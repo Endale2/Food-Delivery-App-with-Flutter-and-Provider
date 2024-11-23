@@ -67,7 +67,9 @@ flutter:
     - lib/images/foods/
     - lib/images/onboards/
     - lib/images/categories/
-  #   - images/a_dot_ham.jpeg
+    - lib/images/restaurants/
+    - lib/images/profile/
+  
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

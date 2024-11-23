@@ -50,7 +50,7 @@ List<FoodModel> foods = [
     category: 'Waffle',
   ),
   FoodModel(
-    image: 'lib/images/foods/',
+    image: 'lib/images/foods/kurume_ramen.png',
     name: 'Kurume Ramen',
     price: 430,
     rate: 4.9,
@@ -58,7 +58,7 @@ List<FoodModel> foods = [
     category: 'Ramen',
   ),
   FoodModel(
-    image: 'lib/images/foods/',
+    image: 'lib/images/foods/bacon_burger.png',
     name: 'Bacon Burger',
     price: 600,
     rate: 4.6,
@@ -66,7 +66,7 @@ List<FoodModel> foods = [
     category: 'Burger',
   ),
   FoodModel(
-    image: 'lib/images/foods/',
+    image: 'lib/images/foods/greek_salad.png',
     name: 'Greek Salad',
     price: 400.0,
     rate: 4.4,
@@ -74,7 +74,7 @@ List<FoodModel> foods = [
     category: 'Salad',
   ),
   FoodModel(
-    image: 'lib/images/foods/',
+    image: 'lib/images/foods/berry_waffle.png',
     name: 'Berry Waffle',
     price: 420,
     rate: 4.8,
