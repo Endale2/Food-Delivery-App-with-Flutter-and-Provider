@@ -12,51 +12,53 @@ class CartItems extends StatelessWidget {
   Widget build(BuildContext context) {
     CartProvider cartProvider = Provider.of<CartProvider>(context);
     Size size = MediaQuery.of(context).size;
+
     return SizedBox(
       height: 160,
-      width: size.width / 1.2,
+      width: size.width / 1.1,
       child: Stack(
         alignment: Alignment.bottomCenter,
         children: [
           Container(
             height: 150,
-            width: size.width - 50,
+            width: size.width - 40,
+            margin: const EdgeInsets.symmetric(horizontal: 10),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(15),
               color: Colors.white,
-              boxShadow: const [
+              boxShadow: [
                 BoxShadow(
-                  color: Colors.black12,
-                  blurRadius: 8,
-                  offset: Offset(0, 4),
+                  color: Colors.grey.withOpacity(0.3),
+                  blurRadius: 10,
+                  spreadRadius: 2,
+                  offset: const Offset(0, 5),
                 ),
               ],
             ),
           ),
-          // Food image
           Positioned(
             top: -10,
-            left: 10,
+            left: 15,
             child: Transform.rotate(
               angle: 10 * pi / 180,
               child: SizedBox(
-                height: 130,
-                width: 130,
+                height: 110,
+                width: 110,
                 child: Stack(
                   alignment: AlignmentDirectional.center,
                   children: [
                     Positioned(
                       bottom: 0,
                       child: Container(
-                        height: 100,
-                        width: 70,
-                        decoration: const BoxDecoration(
+                        height: 80,
+                        width: 80,
+                        decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           boxShadow: [
                             BoxShadow(
-                              color: Colors.black12,
-                              blurRadius: 10,
-                              spreadRadius: 5,
+                              color: Colors.black12.withOpacity(0.1),
+                              blurRadius: 8,
+                              spreadRadius: 3,
                             ),
                           ],
                         ),
@@ -64,7 +66,9 @@ class CartItems extends StatelessWidget {
                     ),
                     Image.asset(
                       cart.foods.image,
-                      width: 130,
+                      fit: BoxFit.cover,
+                      width: 120,
+                      height: 120,
                     ),
                   ],
                 ),
@@ -72,7 +76,7 @@ class CartItems extends StatelessWidget {
             ),
           ),
           Positioned(
-            left: 150,
+            left: 140,
             right: 20,
             top: 20,
             child: Column(
@@ -81,10 +85,12 @@ class CartItems extends StatelessWidget {
                 Text(
                   cart.foods.name,
                   style: const TextStyle(
-                    fontSize: 20,
+                    fontSize: 18,
                     fontWeight: FontWeight.bold,
                     color: Colors.black,
                   ),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
                 ),
                 const SizedBox(height: 8),
                 Row(
@@ -93,36 +99,40 @@ class CartItems extends StatelessWidget {
                       children: [
                         const Icon(
                           Icons.star_rate_rounded,
-                          color: Colors.yellow,
+                          color: Colors.amber,
+                          size: 20,
                         ),
-                        const SizedBox(width: 5),
+                        const SizedBox(width: 4),
                         Text(
                           cart.foods.rate.toString(),
                           style: TextStyle(
-                            color: Colors.black.withOpacity(0.8),
+                            color: Colors.grey.shade800,
+                            fontSize: 14,
                           ),
                         ),
                       ],
                     ),
-                    const SizedBox(width: 15),
+                    const SizedBox(width: 20),
                     Row(
                       children: [
                         const Icon(
                           Icons.location_on,
-                          color: Colors.pink,
+                          color: Colors.redAccent,
                           size: 20,
                         ),
+                        const SizedBox(width: 4),
                         Text(
                           "${cart.foods.distance}m",
                           style: TextStyle(
-                            color: Colors.black.withOpacity(0.8),
+                            color: Colors.grey.shade800,
+                            fontSize: 14,
                           ),
                         ),
                       ],
                     ),
                   ],
                 ),
-                const SizedBox(height: 15),
+                const SizedBox(height: 12),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -130,15 +140,15 @@ class CartItems extends StatelessWidget {
                       "ETB ${cart.foods.price}",
                       style: const TextStyle(
                         color: Colors.black,
-                        fontSize: 25,
-                        fontWeight: FontWeight.bold,
+                        fontSize: 18,
+                        fontWeight: FontWeight.w600,
                       ),
                     ),
                     Container(
                       padding: const EdgeInsets.symmetric(horizontal: 5),
                       decoration: BoxDecoration(
                         color: Colors.grey.shade200,
-                        borderRadius: BorderRadius.circular(10),
+                        borderRadius: BorderRadius.circular(8),
                       ),
                       child: Row(
                         children: [
@@ -151,18 +161,18 @@ class CartItems extends StatelessWidget {
                             child: Container(
                               width: 30,
                               height: 30,
-                              decoration: const BoxDecoration(
-                                  color: Colors.black,
-                                  borderRadius: BorderRadius.vertical(
-                                      top: Radius.circular(7))),
+                              decoration: BoxDecoration(
+                                color: Colors.grey.shade300,
+                                borderRadius: BorderRadius.circular(5),
+                              ),
                               child: const Icon(
                                 Icons.remove,
                                 size: 20,
-                                color: Colors.white,
+                                color: Colors.black,
                               ),
                             ),
                           ),
-                          const SizedBox(width: 5),
+                          const SizedBox(width: 8),
                           Text(
                             cart.quantity.toString(),
                             style: const TextStyle(
@@ -171,7 +181,7 @@ class CartItems extends StatelessWidget {
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                          const SizedBox(width: 5),
+                          const SizedBox(width: 8),
                           GestureDetector(
                             onTap: () {
                               cartProvider.addCart(cart.foods);
@@ -179,10 +189,10 @@ class CartItems extends StatelessWidget {
                             child: Container(
                               width: 30,
                               height: 30,
-                              decoration: const BoxDecoration(
-                                  color: Colors.black,
-                                  borderRadius: BorderRadius.vertical(
-                                      top: Radius.circular(7))),
+                              decoration: BoxDecoration(
+                                color: Colors.orange.shade600,
+                                borderRadius: BorderRadius.circular(5),
+                              ),
                               child: const Icon(
                                 Icons.add,
                                 size: 20,

@@ -15,26 +15,36 @@ class FoodWidget extends StatelessWidget {
     return Stack(
       alignment: AlignmentDirectional.topCenter,
       children: [
+        // Main container
         Container(
-          height: 230,
-          width: MediaQuery.of(context).size.width / 2.4,
+          height: 240,
+          width: MediaQuery.of(context).size.width / 2.3,
           decoration: BoxDecoration(
             color: Colors.white,
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(15),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.1),
+                blurRadius: 10,
+                offset: const Offset(0, 5),
+              ),
+            ],
           ),
         ),
+        // Inner content
         Container(
-          height: 250,
-          width: MediaQuery.of(context).size.width / 2.4,
+          height: 260,
+          width: MediaQuery.of(context).size.width / 2.3,
           decoration: BoxDecoration(
             color: Colors.white,
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(15),
           ),
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                // Food image with shadow
                 Transform.rotate(
                   angle: 10 * pi / 180,
                   child: SizedBox(
@@ -51,9 +61,9 @@ class FoodWidget extends StatelessWidget {
                               shape: BoxShape.circle,
                               boxShadow: [
                                 BoxShadow(
-                                  color: Colors.black.withOpacity(0.3),
-                                  spreadRadius: 10,
-                                  blurRadius: 30,
+                                  color: Colors.black.withOpacity(0.2),
+                                  blurRadius: 15,
+                                  spreadRadius: 5,
                                 ),
                               ],
                             ),
@@ -61,29 +71,27 @@ class FoodWidget extends StatelessWidget {
                         ),
                         Image.asset(
                           food.image,
-                          height: 140,
-                          fit: BoxFit.contain,
+                          height: 130,
+                          fit: BoxFit.cover,
                         ),
                       ],
                     ),
                   ),
                 ),
-                const SizedBox(
-                  height: 5,
-                ),
+                const SizedBox(height: 8),
+                // Food name
                 Text(
                   food.name,
                   maxLines: 1,
                   style: const TextStyle(
-                    fontSize: 17,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.black87,
                   ),
                   overflow: TextOverflow.ellipsis,
                 ),
-                const SizedBox(
-                  height: 5,
-                ),
+                const SizedBox(height: 6),
+                // Rating and distance
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -91,16 +99,14 @@ class FoodWidget extends StatelessWidget {
                       children: [
                         const Icon(
                           Icons.star_rate_rounded,
-                          color: Colors.yellow,
-                          size: 20,
+                          color: Colors.orange,
+                          size: 18,
                         ),
-                        const SizedBox(
-                          width: 3,
-                        ),
+                        const SizedBox(width: 4),
                         Text(
                           food.rate.toString(),
                           style: TextStyle(
-                            color: Colors.black.withOpacity(0.5),
+                            color: Colors.black.withOpacity(0.6),
                           ),
                         ),
                       ],
@@ -109,39 +115,36 @@ class FoodWidget extends StatelessWidget {
                       children: [
                         const Icon(
                           Icons.location_on,
-                          color: Colors.pink,
+                          color: Colors.redAccent,
                           size: 14,
                         ),
-                        const SizedBox(
-                          width: 3,
-                        ),
+                        const SizedBox(width: 4),
                         Text(
                           "${food.distance}m",
                           style: const TextStyle(
                             fontSize: 12,
+                            color: Colors.black45,
                           ),
-                          overflow: TextOverflow.ellipsis,
-                          maxLines: 1,
                         ),
                       ],
                     ),
                   ],
                 ),
-                const SizedBox(
-                  height: 8,
-                ),
+                const Spacer(),
+                // Price
                 Text(
-                  "ETB ${(food.price).toString()}",
+                  "ETB ${food.price}",
                   style: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 20,
+                    fontSize: 18,
                     fontWeight: FontWeight.bold,
+                    color: Colors.black87,
                   ),
                 ),
               ],
             ),
           ),
         ),
+        // Add to cart button
         Positioned(
           bottom: 0,
           right: 0,
@@ -152,19 +155,20 @@ class FoodWidget extends StatelessWidget {
             child: Container(
               padding: const EdgeInsets.all(12),
               decoration: const BoxDecoration(
-                color: Colors.black,
+                color: Colors.orange,
                 borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(10),
-                    bottomRight: Radius.circular(10)),
+                  topLeft: Radius.circular(10),
+                  bottomRight: Radius.circular(15),
+                ),
               ),
               child: const Icon(
                 Icons.shopping_cart_outlined,
                 color: Colors.white,
-                size: 25,
+                size: 24,
               ),
             ),
           ),
-        )
+        ),
       ],
     );
   }

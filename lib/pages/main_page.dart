@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app/bottom_navbar_icons.dart';
 import 'package:food_delivery_app/pages/home_page.dart';
+import 'package:food_delivery_app/pages/messages_page.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -12,7 +13,7 @@ class _MainPageState extends State<MainPage> {
   int currentIndex = 0;
   final List pages = [
     const HomePage(),
-    const Center(child: Text("Message page")),
+    const MessagesPage(),
     const Center(child: Text("Explore page")),
     const Center(child: Text("Profile page"))
   ];

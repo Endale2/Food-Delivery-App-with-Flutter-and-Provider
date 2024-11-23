@@ -16,10 +16,10 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   List<FoodModel> myfood = [];
   String category = '';
+
   @override
   void initState() {
     super.initState();
-
     category = categories.isNotEmpty ? categories[0].name : '';
     filterFoodByCategory(category);
   }
@@ -36,28 +36,24 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    CartProvider cartProvider = Provider.of<CartProvider>(context);
     return SafeArea(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           headersPart(),
-          const SizedBox(
-            height: 35,
-          ),
+          const SizedBox(height: 30),
           const Padding(
             padding: EdgeInsets.symmetric(horizontal: 30),
             child: Text(
               "Let's find the best food around you",
               style: TextStyle(
-                  fontSize: 35,
+                  fontSize: 32,
                   fontWeight: FontWeight.bold,
-                  letterSpacing: -0.4),
+                  color: Colors.black87,
+                  letterSpacing: -0.3),
             ),
           ),
-          const SizedBox(
-            height: 25,
-          ),
+          const SizedBox(height: 25),
           const Padding(
             padding: EdgeInsets.symmetric(horizontal: 30),
             child: Row(
@@ -67,114 +63,119 @@ class _HomePageState extends State<HomePage> {
                 Text(
                   "Find By Category",
                   style: TextStyle(
-                      fontSize: 22,
+                      fontSize: 20,
                       fontWeight: FontWeight.w600,
-                      color: Colors.black),
+                      color: Colors.black87),
                 ),
-                Text("see all",
-                    style: TextStyle(
+                Text(
+                  "See All",
+                  style: TextStyle(
                       color: Colors.orange,
-                    )),
+                      fontWeight: FontWeight.w500,
+                      decoration: TextDecoration.underline),
+                ),
               ],
             ),
           ),
-          const SizedBox(
-            height: 25,
-          ),
+          const SizedBox(height: 20),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 30),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                ...List.generate(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              physics: const BouncingScrollPhysics(),
+              child: Row(
+                children: [
+                  ...List.generate(
                     categories.length,
                     (index) => GestureDetector(
-                          onTap: () {
-                            filterFoodByCategory(categories[index].name);
-                          },
-                          child: Container(
-                            height: 100,
-                            width: 70,
-                            decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(10),
-                                border: category == categories[index].name
-                                    ? Border.all(
-                                        width: 2.4, color: Colors.orange)
-                                    : Border.all(color: Colors.white)),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
+                      onTap: () {
+                        filterFoodByCategory(categories[index].name);
+                      },
+                      child: Container(
+                        height: 110,
+                        width: 80,
+                        margin: const EdgeInsets.symmetric(horizontal: 8),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(12),
+                          border: category == categories[index].name
+                              ? Border.all(width: 2.5, color: Colors.orange)
+                              : Border.all(color: Colors.grey.shade200),
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Stack(
+                              alignment: AlignmentDirectional.center,
                               children: [
-                                Stack(
-                                  alignment: AlignmentDirectional.center,
-                                  children: [
-                                    Container(
-                                      height: 30,
-                                      width: 50,
-                                      decoration: BoxDecoration(
-                                        shape: BoxShape.circle,
-                                        boxShadow: [
-                                          BoxShadow(
-                                              color:
-                                                  Colors.black.withOpacity(0.4),
-                                              offset: const Offset(0, 10),
-                                              blurRadius: 12,
-                                              spreadRadius: 5)
-                                        ],
-                                      ),
-                                    ),
-                                    Image.asset(categories[index].image,
-                                        width: 50, fit: BoxFit.cover),
-                                  ],
+                                Container(
+                                  height: 35,
+                                  width: 55,
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    boxShadow: [
+                                      BoxShadow(
+                                          color: Colors.black.withOpacity(0.15),
+                                          offset: const Offset(0, 6),
+                                          blurRadius: 8)
+                                    ],
+                                  ),
                                 ),
-                                const SizedBox(
-                                  height: 20,
+                                Image.asset(
+                                  categories[index].image,
+                                  width: 50,
+                                  fit: BoxFit.cover,
                                 ),
-                                Text(
-                                  categories[index].name,
-                                  style: const TextStyle(
-                                      fontWeight: FontWeight.w600,
-                                      color: Colors.black),
-                                )
                               ],
                             ),
-                          ),
-                        ))
-              ],
+                            const SizedBox(height: 15),
+                            Text(
+                              categories[index].name,
+                              textAlign: TextAlign.center,
+                              style: const TextStyle(
+                                fontWeight: FontWeight.w600,
+                                color: Colors.black87,
+                                fontSize: 14,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  )
+                ],
+              ),
             ),
           ),
-          const SizedBox(
-            height: 25,
-          ),
+          const SizedBox(height: 25),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 30),
             child: Text(
-              "Results ( ${myfood.length})",
+              "Results (${myfood.length})",
               style: const TextStyle(
-                  color: Colors.black45,
-                  fontWeight: FontWeight.bold,
-                  letterSpacing: -.2),
+                  color: Colors.black54,
+                  fontWeight: FontWeight.w600,
+                  fontSize: 16),
             ),
           ),
-          const SizedBox(
-            height: 20,
-          ),
+          const SizedBox(height: 20),
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             physics: const BouncingScrollPhysics(),
             child: Row(
               children: [
                 ...List.generate(
-                    myfood.length,
-                    (index) => Padding(
-                          padding: index == 0
-                              ? const EdgeInsets.only(left: 25, right: 25)
-                              : const EdgeInsets.only(right: 25),
-                          child: FoodWidget(food: myfood[index]),
-                        ))
+                  myfood.length,
+                  (index) => Padding(
+                    padding: index == 0
+                        ? const EdgeInsets.only(left: 25, right: 25)
+                        : const EdgeInsets.only(right: 25),
+                    child: FoodWidget(food: myfood[index]),
+                  ),
+                ),
               ],
             ),
-          )
+          ),
         ],
       ),
     );
@@ -193,35 +194,27 @@ class _HomePageState extends State<HomePage> {
                     Text(
                       "Your Location",
                       style: TextStyle(
-                          color: Colors.black45,
-                          fontSize: 16,
+                          color: Colors.black54,
+                          fontSize: 15,
                           fontWeight: FontWeight.w600),
                     ),
                     Icon(
                       Icons.keyboard_arrow_down,
-                      color: Colors.black45,
-                      size: 20,
+                      color: Colors.black54,
+                      size: 18,
                     ),
                   ],
                 ),
-                SizedBox(
-                  height: 5,
-                ),
+                SizedBox(height: 5),
                 Row(
                   children: [
-                    Icon(
-                      Icons.location_on,
-                      color: Colors.orange,
-                      size: 20,
-                    ),
-                    SizedBox(
-                      width: 5,
-                    ),
+                    Icon(Icons.location_on, color: Colors.orange, size: 18),
+                    SizedBox(width: 5),
                     Text(
                       "Addis Ababa, Ethiopia",
                       style: TextStyle(
                           fontSize: 16,
-                          color: Colors.black,
+                          color: Colors.black87,
                           fontWeight: FontWeight.w600),
                     )
                   ],
@@ -233,52 +226,50 @@ class _HomePageState extends State<HomePage> {
             children: [
               Container(
                 padding: const EdgeInsets.all(10),
-                child: const Icon(
-                  Icons.search,
-                  color: Colors.black,
-                ),
+                child: const Icon(Icons.search, color: Colors.black54),
                 decoration: BoxDecoration(
-                    border: Border.all(color: Colors.black12),
-                    borderRadius: BorderRadius.circular(10)),
-              ),
-              const SizedBox(
-                width: 10,
-              ),
-              Stack(alignment: AlignmentDirectional.topCenter, children: [
-                Container(
-                  padding: const EdgeInsets.all(10),
-                  margin: const EdgeInsets.symmetric(vertical: 15),
-                  child: const Icon(
-                    Icons.shopping_cart_outlined,
-                    color: Colors.black,
-                  ),
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.black12),
-                      borderRadius: BorderRadius.circular(10)),
+                  border: Border.all(color: Colors.grey.shade300),
+                  borderRadius: BorderRadius.circular(10),
                 ),
-                Positioned(
-                  right: 0,
-                  top: 0,
-                  child: GestureDetector(
-                    onTap: () {
-                      Navigator.push(
+              ),
+              const SizedBox(width: 10),
+              Stack(
+                alignment: AlignmentDirectional.topCenter,
+                children: [
+                  Container(
+                    padding: const EdgeInsets.all(10),
+                    child: const Icon(Icons.shopping_cart_outlined,
+                        color: Colors.black54),
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.grey.shade300),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                  ),
+                  Positioned(
+                    right: 0,
+                    top: 0,
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const CartWidget()));
-                    },
-                    child: Container(
-                      padding: const EdgeInsets.all(8),
-                      decoration: const BoxDecoration(
-                          color: Color(0xfff95f60), shape: BoxShape.circle),
-                      child: Text(
-                        '${Provider.of<CartProvider>(context).carts.length}',
-                        style:
-                            const TextStyle(fontSize: 16, color: Colors.white),
+                              builder: (context) => const CartWidget()),
+                        );
+                      },
+                      child: Container(
+                        padding: const EdgeInsets.all(6),
+                        decoration: const BoxDecoration(
+                            color: Color(0xfff95f60), shape: BoxShape.circle),
+                        child: Text(
+                          '${Provider.of<CartProvider>(context).carts.length}',
+                          style: const TextStyle(
+                              fontSize: 12, color: Colors.white),
+                        ),
                       ),
                     ),
                   ),
-                ),
-              ]),
+                ],
+              ),
             ],
           )
         ],
