@@ -49,6 +49,8 @@ A beautifully designed Flutter application that replicates the user interface of
 6. **Explore and Profile**
 
 ![photo_2024-11-23_23-13-58 (4)](https://github.com/user-attachments/assets/f8d3a64c-32ec-4bcb-be25-bd07ddcb2f18)
+![photo_2024-11-23_23-13-58](https://github.com/user-attachments/assets/977a4757-5ad2-4802-b489-9899117f400f)
+
 
 
 ## State Management
